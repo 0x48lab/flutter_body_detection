@@ -1,0 +1,199 @@
+PODS:
+  - body_detection (0.0.1):
+    - Flutter
+    - GoogleMLKit/PoseDetection (= 2.3.0)
+    - GoogleMLKit/PoseDetectionAccurate (= 2.3.0)
+    - GoogleMLKit/SegmentationSelfie (= 2.3.0)
+  - DKImagePickerController/Core (4.3.2):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.3.2)
+  - DKImagePickerController/PhotoGallery (4.3.2):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.3.2)
+  - DKPhotoGallery (0.0.17):
+    - DKPhotoGallery/Core (= 0.0.17)
+    - DKPhotoGallery/Model (= 0.0.17)
+    - DKPhotoGallery/Preview (= 0.0.17)
+    - DKPhotoGallery/Resource (= 0.0.17)
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Core (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Model (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Preview (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Resource (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - file_picker (0.0.1):
+    - DKImagePickerController/PhotoGallery
+    - Flutter
+  - Flutter (1.0.0)
+  - GoogleDataTransport (9.1.0):
+    - GoogleUtilities/Environment (~> 7.2)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleMLKit/MLKitCore (2.3.0):
+    - MLKitCommon (~> 3.1.0)
+  - GoogleMLKit/PoseDetection (2.3.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitPoseDetection (~> 1.0.0-beta5)
+  - GoogleMLKit/PoseDetectionAccurate (2.3.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitPoseDetectionAccurate (~> 1.0.0-beta5)
+  - GoogleMLKit/SegmentationSelfie (2.3.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitSegmentationSelfie (~> 1.0.0-beta3)
+  - GoogleToolboxForMac/DebugUtils (2.3.2):
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+  - GoogleToolboxForMac/Defines (2.3.2)
+  - GoogleToolboxForMac/Logger (2.3.2):
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+  - "GoogleToolboxForMac/NSData+zlib (2.3.2)":
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.3.2)":
+    - GoogleToolboxForMac/DebugUtils (= 2.3.2)
+    - GoogleToolboxForMac/Defines (= 2.3.2)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.3.2)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.3.2)"
+  - GoogleUtilities/Environment (7.5.2):
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/Logger (7.5.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/UserDefaults (7.5.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilitiesComponents (1.0.0):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.7.0)
+  - MLImage (1.0.0-beta1)
+  - MLKitCommon (3.1.0):
+    - GoogleDataTransport (~> 9.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - GoogleUtilities/UserDefaults (~> 7.0)
+    - GoogleUtilitiesComponents (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+    - Protobuf (~> 3.12)
+  - MLKitPoseDetection (1.0.0-beta5):
+    - MLKitCommon (~> 3.1)
+    - MLKitPoseDetectionCommon (= 1.0.0-beta5)
+    - MLKitXenoCommon (= 1.0.0-beta5)
+  - MLKitPoseDetectionAccurate (1.0.0-beta5):
+    - MLKitCommon (~> 3.1)
+    - MLKitPoseDetectionCommon (= 1.0.0-beta5)
+    - MLKitXenoCommon (= 1.0.0-beta5)
+  - MLKitPoseDetectionCommon (1.0.0-beta5):
+    - MLKitCommon (~> 3.1)
+    - MLKitXenoCommon (= 1.0.0-beta5)
+  - MLKitSegmentationCommon (1.0.0-beta3):
+    - MLKitCommon (~> 3.1)
+    - MLKitXenoCommon (= 1.0.0-beta5)
+  - MLKitSegmentationSelfie (1.0.0-beta3):
+    - MLKitSegmentationCommon (= 1.0.0-beta3)
+  - MLKitVision (1.3.0):
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+    - MLImage (= 1.0.0-beta1)
+    - MLKitCommon (~> 3.0)
+    - Protobuf (~> 3.12)
+  - MLKitXenoCommon (1.0.0-beta5):
+    - MLKitCommon (~> 3.1)
+    - MLKitVision (~> 1.3)
+  - nanopb (2.30908.0):
+    - nanopb/decode (= 2.30908.0)
+    - nanopb/encode (= 2.30908.0)
+  - nanopb/decode (2.30908.0)
+  - nanopb/encode (2.30908.0)
+  - "permission_handler (5.1.0+2)":
+    - Flutter
+  - PromisesObjC (2.0.0)
+  - Protobuf (3.18.0)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
+  - SwiftyGif (5.4.0)
+
+DEPENDENCIES:
+  - body_detection (from `.symlinks/plugins/body_detection/ios`)
+  - file_picker (from `.symlinks/plugins/file_picker/ios`)
+  - Flutter (from `Flutter`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+
+SPEC REPOS:
+  trunk:
+    - DKImagePickerController
+    - DKPhotoGallery
+    - GoogleDataTransport
+    - GoogleMLKit
+    - GoogleToolboxForMac
+    - GoogleUtilities
+    - GoogleUtilitiesComponents
+    - GTMSessionFetcher
+    - MLImage
+    - MLKitCommon
+    - MLKitPoseDetection
+    - MLKitPoseDetectionAccurate
+    - MLKitPoseDetectionCommon
+    - MLKitSegmentationCommon
+    - MLKitSegmentationSelfie
+    - MLKitVision
+    - MLKitXenoCommon
+    - nanopb
+    - PromisesObjC
+    - Protobuf
+    - SDWebImage
+    - SwiftyGif
+
+EXTERNAL SOURCES:
+  body_detection:
+    :path: ".symlinks/plugins/body_detection/ios"
+  file_picker:
+    :path: ".symlinks/plugins/file_picker/ios"
+  Flutter:
+    :path: Flutter
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+
+SPEC CHECKSUMS:
+  body_detection: ec8d077166ec7c1b092d133553ff964eaff7a45e
+  DKImagePickerController: b5eb7f7a388e4643264105d648d01f727110fc3d
+  DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
+  file_picker: 3e6c3790de664ccf9b882732d9db5eaf6b8d4eb1
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
+  GoogleMLKit: 53d5adbee0fe5a701e970f1387d2cfececd5bc50
+  GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
+  GoogleUtilities: 8de2a97a17e15b6b98e38e8770e2d129a57c0040
+  GoogleUtilitiesComponents: a69c0b3b369ba443e988141e75ef49d9010b1c80
+  GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  MLImage: 647f3d580c10b3c9a3f6154f5d7baead60c42a0c
+  MLKitCommon: 1b5c79d52f79d9cc93ab5300e9713c4c215121ea
+  MLKitPoseDetection: d678a95ca0af6658f3539bf64b499e336fa99249
+  MLKitPoseDetectionAccurate: ea4d937dcc4ad5862c1c7157dcfd2141d0545412
+  MLKitPoseDetectionCommon: f3465bba3561e2f12cf4e80ce04e8eb0784ab30b
+  MLKitSegmentationCommon: 28c095b2c026e76087b6ea8dcd0a6a79fc4457c2
+  MLKitSegmentationSelfie: 83537a445fcc3def829852a5b6724f42f328751d
+  MLKitVision: 26da299aef93291f24f5200e8372919f73abf3b5
+  MLKitXenoCommon: 34fc24339d4ad1a3b0b0973fae18987f60802984
+  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
+  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  Protobuf: 1a37ebea1338949e9ac35a3f06e80b3f536eec8d
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7
+
+PODFILE CHECKSUM: dcb6e7ef31414af8f63963816fe98972d0a320aa
+
+COCOAPODS: 1.11.2
