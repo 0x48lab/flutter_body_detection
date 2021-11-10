@@ -1,6 +1,6 @@
 name: body_detection
 description: A flutter plugin that uses MLKit on iOS/Android platforms to enable body pose and mask detection using Pose Detection and Selfie Segmentation APIs for both static images and live camera stream.
-version: 0.0.1
+version: 0.0.2
 homepage: https://0x48lab.com
 repository: https://github.com/0x48lab/flutter_body_detection
 
