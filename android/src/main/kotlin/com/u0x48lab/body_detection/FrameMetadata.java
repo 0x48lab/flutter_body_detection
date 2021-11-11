@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.mlkit.vision.demo;
+package com.u0x48lab.body_detection;
 
 /** Describing a frame info. */
 public class FrameMetadata {
