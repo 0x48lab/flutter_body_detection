@@ -2,6 +2,7 @@ package com.u0x48lab.body_detection
 
 import android.content.Context
 import android.util.Log
+import android.util.Size
 import androidx.camera.core.CameraInfoUnavailableException
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -103,8 +104,8 @@ class CameraSession(private var context: Context) {
         unbindAnalysisUseCase()
 
         val builder = ImageAnalysis.Builder()
-//            .setTargetResolution(Size(1280, 720))
-//            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .setTargetResolution(Size(320, 240))
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
         val useCase = builder.build()
 
         useCase.setAnalyzer(

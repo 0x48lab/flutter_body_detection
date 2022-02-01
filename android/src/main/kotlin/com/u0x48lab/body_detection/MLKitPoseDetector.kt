@@ -7,18 +7,24 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.PoseDetector
-import com.google.mlkit.vision.pose.accurate.AccuratePoseDetectorOptions
+import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
 
 class MLKitPoseDetector(stream: Boolean) {
     private val detector: PoseDetector
     private var task: Task<Pose>? = null
 
     init {
-        // Accurate pose detector on static images, when depending on the pose-detection-accurate sdk
-        val mode = if (stream) AccuratePoseDetectorOptions.STREAM_MODE else AccuratePoseDetectorOptions.SINGLE_IMAGE_MODE
-        val options = AccuratePoseDetectorOptions.Builder()
+        // Base pose detector with streaming frames, when depending on the pose-detection sdk
+        val mode = if (stream) PoseDetectorOptions.STREAM_MODE else PoseDetectorOptions.SINGLE_IMAGE_MODE
+        val options = PoseDetectorOptions.Builder()
             .setDetectorMode(mode)
             .build()
+
+        // Accurate pose detector on static images, when depending on the pose-detection-accurate sdk
+//        val mode = if (stream) AccuratePoseDetectorOptions.STREAM_MODE else AccuratePoseDetectorOptions.SINGLE_IMAGE_MODE
+//        val options = AccuratePoseDetectorOptions.Builder()
+//            .setDetectorMode(mode)
+//            .build()
 
         detector = PoseDetection.getClient(options)
     }
