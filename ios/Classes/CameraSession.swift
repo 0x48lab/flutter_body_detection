@@ -28,9 +28,10 @@ public class CameraSession: NSObject {
     private var isUsingFrontCamera = true
     private var processOutput: ((CMSampleBuffer, UIImage.Orientation) -> Void)?
     
-    public override init() {
+    public init(isUsingFrontCamera: Bool) {
         super.init()
-        
+
+        self.isUsingFrontCamera = isUsingFrontCamera
         self.setUpCaptureSessionOutput()
         self.setUpCaptureSessionInput()
     }

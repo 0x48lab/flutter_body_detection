@@ -13,18 +13,17 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import java.util.concurrent.ExecutionException
 
-class CameraSession(private var context: Context) {
+class CameraSession(private var context: Context, private var lensFacing: Int) {
     private var processOutput: ((ImageProxy, Int) -> Unit)? = null
     private var cameraProvider: ProcessCameraProvider? = null
     private var analysisUseCase: ImageAnalysis? = null
-    private var lensFacing = CameraSelector.LENS_FACING_FRONT
-    private var cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
+    private var cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
     private val lifecycle = CustomLifecycle()
 
     init {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
         cameraProviderFuture.addListener(
-            Runnable {
+            {
                 try {
                     cameraProvider = cameraProviderFuture.get()
 
@@ -94,6 +93,7 @@ class CameraSession(private var context: Context) {
 
         if (analysisUseCase != null) {
             cameraProvider!!.unbind(analysisUseCase)
+            analysisUseCase = null
         }
     }
 
@@ -108,13 +108,12 @@ class CameraSession(private var context: Context) {
         val useCase = builder.build()
 
         useCase.setAnalyzer(
-            ContextCompat.getMainExecutor(context),
-            ImageAnalysis.Analyzer { imageProxy: ImageProxy ->
-                val isImageFlipped = lensFacing == CameraSelector.LENS_FACING_FRONT
-                val rotationDegrees = imageProxy.imageInfo.rotationDegrees
-                processOutput?.let { it(imageProxy, rotationDegrees) }
-            }
-        )
+            ContextCompat.getMainExecutor(context)
+        ) { imageProxy: ImageProxy ->
+            val isImageFlipped = lensFacing == CameraSelector.LENS_FACING_FRONT
+            val rotationDegrees = imageProxy.imageInfo.rotationDegrees
+            processOutput?.let { it(imageProxy, rotationDegrees) }
+        }
 
         cameraProvider!!.bindToLifecycle(lifecycle, cameraSelector, useCase)
 

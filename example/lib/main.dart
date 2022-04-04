@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
 
   bool _isDetectingPose = false;
   bool _isDetectingBodyMask = false;
+  LensFacing _lens = LensFacing.back;
 
   Image? _selectedImage;
 
@@ -164,6 +165,18 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> _toggleLens() async {
+    await _stopCameraStream();
+    if (_lens == LensFacing.front) {
+      await BodyDetection.switchCamera(LensFacing.back);
+      _lens = LensFacing.back;
+    } else {
+      await BodyDetection.switchCamera(LensFacing.front);
+      _lens = LensFacing.front;
+    }
+    await _startCameraStream();
+  }
+
   Future<void> _toggleDetectBodyMask() async {
     if (_isDetectingBodyMask) {
       await BodyDetection.disableBodyMaskDetection();
@@ -270,6 +283,12 @@ class _MyAppState extends State<MyApp> {
                 child: _isDetectingPose
                     ? const Text('Turn off pose detection')
                     : const Text('Turn on pose detection'),
+              ),
+              OutlinedButton(
+                onPressed: _toggleLens,
+                child: _lens == LensFacing.front
+                    ? const Text('Switch to back camera')
+                    : const Text('Switch to front camera'),
               ),
               OutlinedButton(
                 onPressed: _toggleDetectBodyMask,

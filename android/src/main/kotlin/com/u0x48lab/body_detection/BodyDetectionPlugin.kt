@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.annotation.NonNull
+import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageProxy
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -25,6 +26,7 @@ class BodyDetectionPlugin: FlutterPlugin, MethodChannel.MethodCallHandler, Event
   private var poseDetectionEnabled = false
   private var bodyMaskDetectionEnabled = false
   private val poseDetector = MLKitPoseDetector(true)
+  private var lensFacing = CameraSelector.LENS_FACING_FRONT
   private val selfieSegmenter = MLKitSelfieSegmenter()
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -78,7 +80,7 @@ class BodyDetectionPlugin: FlutterPlugin, MethodChannel.MethodCallHandler, Event
         result.success(null)
       }
       "startCameraStream" -> {
-        val session = CameraSession(context)
+        val session = CameraSession(context, lensFacing)
         session.start { imageProxy, rotationDegrees ->
           handleCameraFrame(imageProxy, rotationDegrees)
         }
@@ -90,13 +92,19 @@ class BodyDetectionPlugin: FlutterPlugin, MethodChannel.MethodCallHandler, Event
         cameraSession = null
         result.success(true)
       }
+      "switchCamera" -> {
+        val isFront = call.argument("lensFacing") as String?
+        lensFacing =
+          if (isFront?.equals("FRONT") == true) CameraSelector.LENS_FACING_BACK else CameraSelector.LENS_FACING_BACK
+        result.success(true)
+      }
       else -> {
         result.notImplemented()
       }
     }
   }
 
-  @SuppressLint("UnsafeExperimentalUsageError")
+  @SuppressLint("UnsafeExperimentalUsageError", "UnsafeOptInUsageError")
   private fun handleCameraFrame(imageProxy: ImageProxy, rotationDegrees: Int) {
     val bitmap = BitmapUtils.getBitmap(imageProxy, true)
     val width = bitmap?.width ?: 0

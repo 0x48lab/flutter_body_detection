@@ -10,6 +10,11 @@ import 'models/body_mask.dart';
 import 'png_image.dart';
 import 'types.dart';
 
+enum LensFacing {
+  front,
+  back,
+}
+
 class BodyDetection {
   static const MethodChannel _channel =
       MethodChannel('com.0x48lab/body_detection');
@@ -94,6 +99,16 @@ class BodyDetection {
       _imageStreamSubscription = null;
 
       await _channel.invokeMethod<void>('stopCameraStream');
+    } on PlatformException catch (e) {
+      throw BodyDetectionException(e.code, e.message);
+    }
+  }
+
+  static Future<void> switchCamera(LensFacing facing) async {
+    try {
+      await _channel.invokeMethod<void>('switchCamera', <String, dynamic>{
+        'lensFacing': facing == LensFacing.front ? "FRONT" : "BACK",
+      });
     } on PlatformException catch (e) {
       throw BodyDetectionException(e.code, e.message);
     }
