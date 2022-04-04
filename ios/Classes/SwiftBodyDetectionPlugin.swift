@@ -7,6 +7,7 @@ public class SwiftBodyDetectionPlugin: NSObject, FlutterPlugin {
     private var cameraSession: CameraSession?
     private var poseDetectionEnabled = false
     private var bodyMaskDetectionEnabled = false
+    private var isUsingFrontCamera = true
     private let poseDetector = MLKitPoseDetector(stream: true)
     private let selfieSegmenter = MLKitSelfieSegmenter()
     
@@ -126,7 +127,7 @@ public class SwiftBodyDetectionPlugin: NSObject, FlutterPlugin {
                 print("Camera session already active! Call stopCameraStream first and try again.")
                 return
             }
-            let session = CameraSession()
+            let session = CameraSession(isUsingFrontCamera: isUsingFrontCamera)
             session.start(closure: self.handleCameraFrame)
             self.cameraSession = session
             result(true)
@@ -141,6 +142,20 @@ public class SwiftBodyDetectionPlugin: NSObject, FlutterPlugin {
             session.stop()
             self.cameraSession = nil
             result(true)
+            return
+        case "switchCamera":
+            do {
+                guard let arguments = call.arguments as? [String : Any] else {
+                    throw BodyDetectionPluginError.badArgument("Expected dictionary type.")
+                }
+                guard let lensFacing = arguments["lensFacing"] as? NSString else {
+                    throw BodyDetectionPluginError.badArgument("lensFacing")
+                }
+                isUsingFrontCamera = lensFacing == "FRONT"
+                result(true)
+            } catch {
+                result(error.toFlutterError());
+            }
             return
             
         // Method not implemented.
